@@ -126,8 +126,19 @@ h1,h2,h3{font-family:var(--display);font-weight:500;margin:0;line-height:1;lette
 .elenco li .desc a{color:var(--luz-clara)}
 .elenco li.em-cena{opacity:1;transform:translateX(10px)}
 .elenco li.em-cena h3{color:var(--luz-clara)}
-.foto-palco{position:relative;margin:56px 0 0;overflow:hidden}
-.foto-palco img{width:100%;aspect-ratio:21/9;object-fit:cover;border-radius:2px;transform:scale(1.1)}
+.palcos-corpo{position:relative;display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:clamp(28px,4vw,64px);align-items:start}
+.elenco li{grid-template-columns:50px minmax(0,1fr) !important}
+.elenco li .desc{grid-column:2;margin-top:6px !important}
+.elenco li .mini{display:none}
+.painel{position:sticky;top:120px;aspect-ratio:1/1;max-height:56vh}
+.quadro{position:absolute;inset:0;margin:0;opacity:0;transition:opacity .6s ease;overflow:hidden;border-radius:2px;box-shadow:0 0 0 1px rgba(241,233,218,.1),0 40px 80px -40px rgba(0,0,0,.8)}
+.quadro.ativo{opacity:1}
+.quadro img{width:100%;height:100%;object-fit:cover;transform:scale(1.06);transition:transform 1.2s cubic-bezier(.22,1,.36,1)}
+.quadro.ativo img{transform:scale(1)}
+.quadro::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 35%,rgba(246,213,142,.18),rgba(18,13,16,0) 45%,rgba(18,13,16,.55) 100%);pointer-events:none}
+.quadro figcaption{position:absolute;left:16px;right:16px;bottom:14px;z-index:2;font-size:12.5px;color:rgba(241,233,218,.85);text-shadow:0 1px 8px rgba(0,0,0,.8)}
+.quadro.sem-foto{background:radial-gradient(circle at 50% 30%,#5A0F1C,#2A0A12 70%);display:grid;place-items:center}
+.nome-grande{font-family:var(--display);font-style:italic;font-size:clamp(44px,5vw,80px);color:var(--luz-clara);text-align:center;padding:0 20px;line-height:1}
 .palcos .credito{color:rgba(241,233,218,.6)}
 
 /* ---------- 5. o ano em cartaz ---------- */
@@ -215,7 +226,11 @@ h1,h2,h3{font-family:var(--display);font-weight:500;margin:0;line-height:1;lette
   .peca h3{font-size:clamp(30px,9vw,46px);margin:18px 0 10px}
   .peca p{font-size:14px}
   .elenco li{grid-template-columns:1fr;gap:6px;padding:22px 0}
-  .foto-palco img{aspect-ratio:4/3}
+  .palcos-corpo{grid-template-columns:1fr}
+  .painel{display:none}
+  .elenco li .mini{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:2px;margin:6px 0 14px}
+  .elenco li{grid-template-columns:1fr !important}
+  .elenco li .desc{grid-column:1}
   .meses{grid-template-columns:repeat(2,minmax(0,1fr))}
   .mes{min-height:150px;padding:14px}
   .rodape ul{columns:1}
@@ -225,6 +240,7 @@ h1,h2,h3{font-family:var(--display);font-weight:500;margin:0;line-height:1;lette
 .fx-reduzido .sala .fx-palco{position:relative;min-height:100vh}
 .fx-reduzido .revelado{opacity:1}
 .fx-reduzido .elenco li{opacity:1;transform:none}
+.fx-reduzido .quadro[data-para="1"]{opacity:1}
 </style>
 </head>
 <body>
@@ -301,15 +317,21 @@ h1,h2,h3{font-family:var(--display);font-weight:500;margin:0;line-height:1;lette
     <div><p class="rotulo">O elenco de espaços</p><h2 id="titulo-palcos" style="margin-top:14px">Os palcos <em>da cidade.</em></h2></div>
     <p>Passe o mouse ou role a página: o refletor ilumina um palco de cada vez.</p>
   </div>
+  <div class="palcos-corpo">
   <ol class="elenco" id="elenco">
-    <li><span class="n">01</span><div><h3>Teatro Municipal <em>Laercio Rangel Ventura</em></h3><p class="onde">Praça do Suspiro · Centro</p></div><p class="desc">O principal palco da cidade, reaberto em 2024 depois de um período de manutenção. Recebe teatro, shows, dança e cinema. O Anfiteatro do teatro também recebe apresentações.</p></li>
-    <li><span class="n">02</span><div><h3>Usina Cultural <em>Energisa</em></h3><p class="onde">Praça Pres. Getúlio Vargas, 55 · Centro</p></div><p class="desc">Teatro, exposições, oficinas e programação para a família, em parceria com a Secretaria de Cultura.</p></li>
-    <li><span class="n">03</span><div><h3>Oficina Escola <em>de Artes</em></h3><p class="onde">Praça Getúlio Vargas, 89 · Centro</p></div><p class="desc">Escola pública de artes no antigo fórum, restaurado em 2023. Cursos gratuitos de balé, canto coral, cavaquinho, dança, desenho e pintura, flauta, teatro, teclado, violão e violino.</p></li>
-    <li><span class="n">04</span><div><h3>Museu <em>Nova Friburgo</em></h3><p class="onde">Praça Getúlio Vargas · Centro</p></div><p class="desc">No casarão de 1843 que foi residência urbana do Barão de Nova Friburgo. Abriga a Sala Luzes de África, dedicada à história e à cultura da população negra.</p></li>
-    <li><span class="n">05</span><div><h3>Casarão <em>do Lazareto</em></h3><p class="onde">Duas Pedras</p></div><p class="desc">Restaurado e aberto em 2026 como Casa de Cultura e Cidadania, com oficinas de várias linguagens artísticas.</p></li>
-    <li><span class="n">06</span><div><h3>Centro Cultural <em>Bernardo Monteverde</em></h3><p class="onde">Alto</p></div><p class="desc">Abriga uma unidade de atendimento da Secretaria Municipal de Cultura.</p></li>
+    <li data-n="1"><span class="n">01</span><div><img class="mini" src="img/teatro-fachada.webp" alt="Fachada iluminada do Teatro Municipal Laercio Rangel Ventura à noite" loading="lazy"><h3>Teatro Municipal <em>Laercio Rangel Ventura</em></h3><p class="onde">Rua Salusse, 616 · Praça do Suspiro</p></div><p class="desc">O principal palco da cidade: 564 lugares na plateia, inaugurado em 2008 e reaberto em 2024. Recebe música, teatro, dança e espetáculos infantis. O Anfiteatro do teatro também recebe apresentações.</p></li>
+    <li data-n="2"><span class="n">02</span><div><img class="mini" src="img/praca-getulio.webp" alt="Praça Getúlio Vargas arborizada, no Centro" loading="lazy"><h3>Usina Cultural <em>Energisa</em></h3><p class="onde">Praça Pres. Getúlio Vargas, 55 · Centro</p></div><p class="desc">Teatro, exposições, oficinas e programação para a família, em parceria com a Secretaria de Cultura.</p></li>
+    <li data-n="3"><span class="n">03</span><div><img class="mini" src="img/praca-getulio.webp" alt="Praça Getúlio Vargas arborizada, no Centro" loading="lazy"><h3>Oficina Escola <em>de Artes</em></h3><p class="onde">Praça Getúlio Vargas, 89 · Centro</p></div><p class="desc">Escola pública de artes no antigo fórum, restaurado em 2023. Cursos gratuitos de balé, canto coral, cavaquinho, dança, desenho e pintura, flauta, teatro, teclado, violão e violino.</p></li>
+    <li data-n="4"><span class="n">04</span><div><img class="mini" src="img/praca-getulio.webp" alt="Praça Getúlio Vargas arborizada, no Centro" loading="lazy"><h3>Museu <em>Nova Friburgo</em></h3><p class="onde">Praça Getúlio Vargas · Centro</p></div><p class="desc">No casarão de 1843 que foi residência urbana do Barão de Nova Friburgo. Abriga a Sala Luzes de África, dedicada à história e à cultura da população negra.</p></li>
+    <li data-n="5"><span class="n">05</span><div><h3>Casarão <em>do Lazareto</em></h3><p class="onde">Duas Pedras</p></div><p class="desc">Restaurado e aberto em 2026 como Casa de Cultura e Cidadania, com oficinas de várias linguagens artísticas.</p></li>
+    <li data-n="6"><span class="n">06</span><div><h3>Centro Cultural <em>Bernardo Monteverde</em></h3><p class="onde">Alto</p></div><p class="desc">Abriga uma unidade de atendimento da Secretaria Municipal de Cultura.</p></li>
   </ol>
-  <figure class="foto-palco" data-fx="subir"><img data-fx-paralaxe="0.06" src="img/suspiro.webp" alt="Praça do Suspiro com a igreja e o teleférico, onde fica o Teatro Municipal" loading="lazy"><figcaption class="credito">Praça do Suspiro, endereço do Teatro Municipal · Foto: João Luccas Oliveira</figcaption></figure>
+  <div class="painel" aria-hidden="true">
+    <figure class="quadro" data-para="1"><img src="img/teatro-fachada.webp" alt="" loading="lazy"><figcaption>Teatro Municipal à noite · Foto: Teatro Municipal de Nova Friburgo</figcaption></figure>
+    <figure class="quadro" data-para="2 3 4"><img src="img/praca-getulio.webp" alt="" loading="lazy"><figcaption>Praça Getúlio Vargas · Foto: Donatas Dabravolskas (CC BY-SA 4.0)</figcaption></figure>
+    <figure class="quadro sem-foto" data-para="5 6"><span class="nome-grande" id="nome-grande">Lazareto</span><figcaption>Foto a incluir</figcaption></figure>
+  </div>
+  </div>
 </section>
 
 <!-- 5. O ANO EM CARTAZ -->
@@ -394,7 +416,8 @@ h1,h2,h3{font-family:var(--display);font-weight:500;margin:0;line-height:1;lette
     <ul>
       <li>Vídeo de abertura: Prefeitura de Nova Friburgo · Secretaria de Turismo</li>
       <li>Centro com ipê florido e teleférico na neblina: Daniel Marcus</li>
-      <li>Praça do Suspiro: João Luccas Oliveira</li>
+      <li>Teatro Municipal à noite: site do Teatro Municipal de Nova Friburgo</li>
+      <li>Praça Getúlio Vargas: Donatas Dabravolskas, CC BY-SA 4.0, via Wikimedia Commons</li>
       <li>Nova Friburgo, Coleção Brasiliana Iconográfica: domínio público, via Wikimedia Commons</li>
     </ul>
   </details>
@@ -453,6 +476,15 @@ h1,h2,h3{font-family:var(--display);font-weight:500;margin:0;line-height:1;lette
     if (li === atual) return;
     if (atual) atual.classList.remove('em-cena');
     atual = li; if (li) li.classList.add('em-cena');
+    mostrar(li);
+  }
+  var quadros = Array.prototype.slice.call(document.querySelectorAll('.quadro'));
+  var nomeGrande = document.getElementById('nome-grande');
+  function mostrar(li){
+    if (!li) return;
+    var n = li.getAttribute('data-n');
+    quadros.forEach(function(q){ q.classList.toggle('ativo', q.getAttribute('data-para').split(' ').indexOf(n) >= 0); });
+    if (n === '5' || n === '6'){ nomeGrande.textContent = n === '5' ? 'Lazareto' : 'Monteverde'; }
   }
   function maisPerto(y){
     var melhor = null, dist = 1e9;
