@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cultura Nova Friburgo · A cidade em cena</title>
+<meta name="description" content="Teatro, música, dança, artes visuais, memória e editais: a cultura de Nova Friburgo em um só lugar.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..800;1,6..96,400..600&family=Libre+Franklin:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="sites-incriveis.css">
+<style>
+:root{
+  --noite:#120D10; --palco:#1E1517; --veludo:#6E1423; --veludo-escuro:#3B0A14; --papel:#F1E9DA; --papel-2:#E7DCC8;
+  --tinta:#1C1517; --suave:#6D6156; --luz:#E8B04A; --luz-clara:#F6D58E;
+  --display:'Bodoni Moda', 'Didot', Georgia, serif; --texto:'Libre Franklin', system-ui, sans-serif;
+  --borda:min(6vw, 96px);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--papel);color:var(--tinta);font-family:var(--texto);font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);font-weight:500;margin:0;line-height:1;letter-spacing:-.01em;font-optical-sizing:auto}
+.rotulo{font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;margin:0}
+.credito{font-size:13px;color:var(--suave);margin:10px 0 0}
+.pular{position:absolute;left:-999px;top:12px;z-index:100;background:#fff;padding:10px 16px}
+.pular:focus{left:12px}
+:focus-visible{outline:3px solid var(--luz);outline-offset:3px}
+
+/* ---------- cabeçalho ---------- */
+.topo{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:16px var(--borda);background:rgba(18,13,16,.82);backdrop-filter:blur(8px);color:var(--papel)}
+.marca{display:flex;align-items:baseline;gap:12px;text-decoration:none}
+.marca b{font-family:var(--display);font-weight:600;font-size:26px;font-style:italic}
+.marca span{font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--luz)}
+.topo nav{display:flex;gap:28px;font-size:14px;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.topo nav a{text-decoration:none;padding:10px 0}
+.topo nav a:hover{color:var(--luz)}
+.menu-toggle{display:none;background:none;border:1px solid currentColor;color:inherit;border-radius:999px;padding:7px 16px;font:600 13px var(--texto);letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
+
+/* ---------- botões ---------- */
+.botao{display:inline-flex;align-items:center;gap:10px;background:var(--luz);color:#1B1206;text-decoration:none;font-weight:700;font-size:15px;letter-spacing:.06em;text-transform:uppercase;padding:16px 26px;min-height:52px;border-radius:2px;transition:background .25s}
+.botao:hover{background:var(--luz-clara)}
+.botao.contorno{background:transparent;color:inherit;border:1px solid currentColor}
+.botao.contorno:hover{background:rgba(232,176,74,.12)}
+.botao::after{content:"\2192"}
+
+/* ---------- 1. abertura ---------- */
+.abertura{position:relative;height:100vh;height:100svh;min-height:600px;overflow:hidden;color:#fff;background:var(--noite)}
+.abertura video,.abertura .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.abertura::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 80% 70% at 15% 100%,rgba(18,13,16,.82) 0%,rgba(18,13,16,.35) 55%,rgba(18,13,16,0) 80%),linear-gradient(180deg,rgba(18,13,16,.35),rgba(18,13,16,0) 30%);pointer-events:none}
+.abertura-texto{position:absolute;left:var(--borda);right:var(--borda);bottom:clamp(44px,9vh,100px);z-index:2;max-width:1100px}
+.abertura .rotulo{color:var(--luz-clara);text-shadow:0 1px 12px rgba(0,0,0,.5)}
+.abertura h1{font-size:clamp(58px,9.4vw,160px);margin:14px 0 18px;font-weight:500;text-shadow:0 2px 30px rgba(0,0,0,.35)}
+.abertura h1 em{font-style:italic;color:var(--luz-clara)}
+.abertura .sub{font-size:clamp(17px,1.5vw,21px);max-width:44ch;margin:0 0 28px;text-shadow:0 1px 14px rgba(0,0,0,.6)}
+.atalhos{display:flex;flex-wrap:wrap;gap:10px}
+.atalhos a{color:#fff;text-decoration:none;font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:11px 18px;border:1px solid rgba(255,255,255,.55);background:rgba(18,13,16,.4);backdrop-filter:blur(4px)}
+.atalhos a:hover{border-color:var(--luz);color:var(--luz-clara)}
+.atalhos a.principal{background:var(--luz);border-color:var(--luz);color:#1B1206}
+.pausar{position:absolute;right:var(--borda);top:clamp(92px,13vh,130px);z-index:3;width:52px;height:52px;border-radius:50%;border:1px solid rgba(255,255,255,.75);background:rgba(18,13,16,.35);color:#fff;display:grid;place-items:center;cursor:pointer}
+.pausar svg{width:18px;height:18px}
+
+/* ---------- 2. em cartaz: linguagens ---------- */
+.cartaz{padding:clamp(100px,14vh,160px) var(--borda) clamp(90px,12vh,140px)}
+.cartaz-cabeca{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:40px;align-items:end;margin-bottom:clamp(44px,7vh,80px)}
+.cartaz-cabeca h2{font-size:clamp(46px,6vw,96px)}
+.cartaz-cabeca h2 em{font-style:italic;color:var(--veludo)}
+.cartaz-cabeca>p{color:var(--suave);max-width:420px;margin:0;justify-self:end}
+.cartaz .rotulo{color:var(--veludo)}
+.cartazes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.peca{position:relative;min-height:clamp(300px,30vw,430px);padding:26px 26px 24px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;border-radius:2px;box-shadow:0 24px 50px -34px rgba(28,21,23,.6)}
+.peca:nth-child(1){background:var(--veludo);color:var(--papel)}
+.peca:nth-child(2){background:#16313A;color:#EAF0EE;margin-top:48px}
+.peca:nth-child(3){background:var(--luz);color:#2A1A06}
+.peca:nth-child(4){background:var(--papel-2);color:var(--tinta);border:1px solid rgba(28,21,23,.15)}
+.peca:nth-child(5){background:var(--noite);color:var(--papel);margin-top:48px}
+.peca:nth-child(6){background:#2E4A35;color:#EEF2EA}
+.peca .n{font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;opacity:.8;display:flex;justify-content:space-between}
+.peca h3{font-size:clamp(46px,5vw,84px);font-weight:600;line-height:.9;letter-spacing:-.02em;margin:28px 0 18px;word-break:break-word}
+.peca h3 em{font-style:italic;font-weight:400}
+.peca p{margin:0;font-size:16px;max-width:30ch;opacity:.92}
+.peca::before{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;border:1px solid currentColor;opacity:.18}
+
+/* ---------- 3. PICO: os três sinais e a cortina ---------- */
+.sala{background:var(--noite);color:var(--papel)}
+.sala .fx-palco{display:block}
+.cena-fundo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.9) brightness(.82)}
+.cena-sombra{position:absolute;inset:0;background:radial-gradient(ellipse 55% 60% at 50% 46%,rgba(18,13,16,0) 0%,rgba(18,13,16,.55) 60%,rgba(18,13,16,.92) 100%)}
+.feixe{position:absolute;left:50%;top:-10%;width:70vmax;height:130%;margin-left:-35vmax;transform-origin:50% 0;background:linear-gradient(180deg,rgba(246,213,142,.55),rgba(246,213,142,.05) 75%,rgba(246,213,142,0));clip-path:polygon(46% 0,54% 0,100% 100%,0 100%);mix-blend-mode:screen;opacity:0}
+.cortina{position:absolute;top:0;bottom:0;width:51%;z-index:3;background:
+  repeating-linear-gradient(90deg,rgba(0,0,0,.42) 0,rgba(0,0,0,.05) 2.2%,rgba(255,255,255,.07) 4.4%,rgba(0,0,0,.05) 6.6%,rgba(0,0,0,.42) 8.8%),
+  linear-gradient(180deg,#5A0F1C 0%,#7A1828 40%,#5A0F1C 100%);box-shadow:inset 0 -80px 120px -40px rgba(0,0,0,.6);will-change:transform}
+.cortina.esq{left:0;transform-origin:0 0}
+.cortina.dir{right:0;transform-origin:100% 0}
+.cortina::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 60% 40% at 50% 100%,rgba(0,0,0,.35),rgba(0,0,0,0) 70%)}
+.bambolina{position:absolute;left:0;right:0;top:0;height:clamp(70px,11vh,110px);z-index:4;background:
+  radial-gradient(ellipse 50% 100% at 50% 0,#7A1828 70%,transparent 71%) 0 100%/120px 40px repeat-x,
+  linear-gradient(180deg,#3B0A14,#6E1423);border-bottom:0;box-shadow:0 18px 30px -18px rgba(0,0,0,.8)}
+.bambolina::after{content:"";position:absolute;left:0;right:0;bottom:-38px;height:40px;background:radial-gradient(ellipse 50% 100% at 50% 0,#6E1423 70%,transparent 72%) 0 0/120px 40px repeat-x}
+.sinais{position:absolute;inset:0;z-index:5;display:grid;place-items:center;text-align:center;pointer-events:none}
+.sinal{grid-area:1/1;font-family:var(--display);font-style:italic;font-size:clamp(44px,6.6vw,110px);color:var(--luz-clara);text-shadow:0 2px 40px rgba(0,0,0,.6);opacity:0}
+.sinal small{display:block;font-family:var(--texto);font-style:normal;font-size:14px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--papel);margin-top:14px}
+.sinal.s1{opacity:1}
+.revelado{position:absolute;left:var(--borda);right:var(--borda);bottom:clamp(60px,12vh,130px);z-index:2;max-width:1000px;opacity:0}
+.revelado h2{font-size:clamp(52px,8vw,136px);font-weight:500;text-shadow:0 2px 30px rgba(0,0,0,.5)}
+.revelado h2 em{font-style:italic;color:var(--luz-clara)}
+.revelado p{font-size:clamp(18px,1.6vw,22px);max-width:40ch;margin:18px 0 0;text-shadow:0 1px 14px rgba(0,0,0,.7)}
+.revelado .credito{color:rgba(241,233,218,.75)}
+
+/* ---------- 4. palcos (assinatura: o refletor) ---------- */
+.palcos{position:relative;background:var(--palco);color:var(--papel);padding:clamp(100px,14vh,160px) var(--borda);overflow:hidden;--rx:70%;--ry:30%}
+.palcos::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle 34vmax at var(--rx) var(--ry),rgba(246,213,142,.16),rgba(246,213,142,.05) 45%,rgba(246,213,142,0) 70%);transition:background .2s}
+.palcos-cabeca{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:end;margin-bottom:clamp(40px,6vh,64px)}
+.palcos-cabeca h2{font-size:clamp(46px,6vw,96px)}
+.palcos-cabeca h2 em{font-style:italic;color:var(--luz)}
+.palcos-cabeca>p{color:rgba(241,233,218,.72);max-width:420px;margin:0;justify-self:end}
+.palcos .rotulo{color:var(--luz)}
+.elenco{position:relative;list-style:none;margin:0;padding:0;border-top:1px solid rgba(241,233,218,.16)}
+.elenco li{display:grid;grid-template-columns:60px minmax(0,1.3fr) minmax(0,1fr);gap:28px;align-items:baseline;padding:28px 0;border-bottom:1px solid rgba(241,233,218,.16);opacity:.38;transition:opacity .45s ease, transform .45s cubic-bezier(.22,1,.36,1)}
+.elenco li .n{font-size:13px;font-weight:700;letter-spacing:.16em;color:var(--luz)}
+.elenco li h3{font-size:clamp(32px,3.6vw,58px);transition:color .45s}
+.elenco li h3 em{font-style:italic}
+.elenco li .onde{font-size:14px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(241,233,218,.7);margin:10px 0 0}
+.elenco li .desc{margin:0;font-size:16px;color:rgba(241,233,218,.86)}
+.elenco li .desc a{color:var(--luz-clara)}
+.elenco li.em-cena{opacity:1;transform:translateX(10px)}
+.elenco li.em-cena h3{color:var(--luz-clara)}
+.foto-palco{position:relative;margin:56px 0 0;overflow:hidden}
+.foto-palco img{width:100%;aspect-ratio:21/9;object-fit:cover;border-radius:2px;transform:scale(1.1)}
+.palcos .credito{color:rgba(241,233,218,.6)}
+
+/* ---------- 5. o ano em cartaz ---------- */
+.ano{padding:clamp(100px,14vh,160px) var(--borda)}
+.ano .rotulo{color:var(--veludo)}
+.ano-cabeca{display:flex;justify-content:space-between;align-items:end;gap:32px;flex-wrap:wrap;margin-bottom:clamp(40px,6vh,64px)}
+.ano h2{font-size:clamp(46px,6vw,96px);margin-top:14px}
+.ano h2 em{font-style:italic;color:var(--veludo)}
+.ano-cabeca>p{max-width:380px;margin:0;color:var(--suave)}
+.meses{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));border-top:1px solid rgba(28,21,23,.2);border-left:1px solid rgba(28,21,23,.2)}
+.mes{min-height:190px;padding:18px 18px 20px;border-right:1px solid rgba(28,21,23,.2);border-bottom:1px solid rgba(28,21,23,.2);display:flex;flex-direction:column;gap:10px}
+.mes .m{font-family:var(--display);font-style:italic;font-size:28px;color:var(--suave)}
+.mes.tem{background:#fff}
+.mes.tem .m{color:var(--veludo)}
+.mes b{font-family:var(--display);font-weight:600;font-size:21px;line-height:1.08}
+.mes span{font-size:14px;color:var(--suave);line-height:1.45}
+.mes.destaque{background:var(--veludo);color:var(--papel)}
+.mes.destaque .m{color:var(--luz-clara)}
+.mes.destaque span{color:rgba(241,233,218,.85)}
+.mes.continua{background:transparent}
+.mes.continua span{font-style:italic}
+.ano .nota{font-size:14px;color:var(--suave);margin-top:18px;max-width:70ch}
+
+/* ---------- 6. para quem faz cultura ---------- */
+.fazer{background:var(--veludo-escuro);color:var(--papel);padding:clamp(100px,14vh,160px) var(--borda);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,6vw,96px);align-items:start}
+.fazer .rotulo{color:var(--luz)}
+.fazer h2{font-size:clamp(44px,5.4vw,86px);margin:16px 0 24px}
+.fazer h2 em{font-style:italic;color:var(--luz-clara)}
+.fazer>div>p{max-width:46ch;color:rgba(241,233,218,.86)}
+.fazer .botoes{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.programa{list-style:none;margin:0;padding:0}
+.programa li{padding:22px 0;border-top:1px solid rgba(241,233,218,.2)}
+.programa li:last-child{border-bottom:1px solid rgba(241,233,218,.2)}
+.programa .t{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--luz)}
+.programa h3{font-size:clamp(26px,2.4vw,36px);margin:8px 0 8px}
+.programa p{margin:0;font-size:16px;color:rgba(241,233,218,.82)}
+
+/* ---------- 7. memória ---------- */
+.memoria{padding:clamp(100px,14vh,160px) var(--borda);display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1fr);gap:clamp(32px,6vw,96px);align-items:center}
+.memoria figure{margin:0;overflow:hidden}
+.memoria img{width:100%;border:10px solid #fff;box-shadow:0 30px 60px -36px rgba(28,21,23,.55)}
+.memoria .rotulo{color:var(--veludo)}
+.memoria h2{font-size:clamp(40px,5vw,80px);margin:16px 0 22px}
+.memoria h2 em{font-style:italic;color:var(--veludo)}
+.memoria ul{padding-left:0;list-style:none;margin:24px 0 0}
+.memoria li{padding:14px 0;border-top:1px solid rgba(28,21,23,.16)}
+.memoria li b{font-family:var(--display);font-size:22px;font-weight:600;display:block}
+
+/* ---------- 8. convite ---------- */
+.convite{position:relative;min-height:100vh;color:#fff;display:flex;align-items:flex-end;overflow:hidden;background:var(--noite)}
+.convite>img{position:absolute;inset:-10% 0;width:100%;height:120%;object-fit:cover}
+.convite::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(18,13,16,.88),rgba(18,13,16,.2) 70%)}
+.convite-texto{position:relative;z-index:2;padding:0 var(--borda) clamp(56px,10vh,110px);max-width:1200px}
+.convite .rotulo{color:var(--luz)}
+.convite h2{font-size:clamp(52px,7.6vw,128px);margin:16px 0 32px}
+.convite h2 em{font-style:italic;color:var(--luz-clara)}
+.convite .botoes{display:flex;gap:12px;flex-wrap:wrap}
+.convite .credito{color:rgba(255,255,255,.7);margin-top:24px}
+
+/* ---------- rodapé ---------- */
+.rodape{background:var(--noite);color:rgba(241,233,218,.8);padding:72px var(--borda) 48px;font-size:15px}
+.rodape-topo{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;margin-bottom:36px}
+.rodape .marca{color:var(--papel)}
+.rodape a{color:var(--papel)}
+.rodape nav{display:flex;gap:22px;flex-wrap:wrap;font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase}
+.rodape details{border-top:1px solid rgba(241,233,218,.15);padding-top:16px}
+.rodape summary{cursor:pointer;font-weight:700;color:var(--papel);min-height:44px;display:flex;align-items:center}
+.rodape ul{columns:2;column-gap:40px;padding-left:18px;font-size:13.5px}
+.rodape small{display:block;margin-top:28px;color:rgba(241,233,218,.55);max-width:72ch}
+
+/* ---------- celular ---------- */
+@media (max-width:900px){
+  body{font-size:17px}
+  .topo nav{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background:var(--noite);padding:8px var(--borda) 18px}
+  .topo nav a{padding:12px 0;border-bottom:1px solid rgba(241,233,218,.12)}
+  .topo.aberto nav{display:flex}
+  .menu-toggle{display:inline-block}
+  .marca span{display:none}
+  .pausar{top:84px;width:44px;height:44px}
+  .cartaz-cabeca,.palcos-cabeca,.fazer,.memoria{grid-template-columns:1fr}
+  .cartaz-cabeca>p,.palcos-cabeca>p{justify-self:start}
+  .cartazes{grid-template-columns:1fr 1fr;gap:10px}
+  .peca{min-height:230px;padding:18px}
+  .peca:nth-child(n){margin-top:0}
+  .peca h3{font-size:clamp(30px,9vw,46px);margin:18px 0 10px}
+  .peca p{font-size:14px}
+  .elenco li{grid-template-columns:1fr;gap:6px;padding:22px 0}
+  .foto-palco img{aspect-ratio:4/3}
+  .meses{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .mes{min-height:150px;padding:14px}
+  .rodape ul{columns:1}
+}
+@media (max-width:420px){ .cartazes{grid-template-columns:1fr} }
+.fx-reduzido .cortina,.fx-reduzido .bambolina,.fx-reduzido .sinais,.fx-reduzido .feixe{display:none}
+.fx-reduzido .sala .fx-palco{position:relative;min-height:100vh}
+.fx-reduzido .revelado{opacity:1}
+.fx-reduzido .elenco li{opacity:1;transform:none}
+</style>
+</head>
+<body>
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="topo" id="topo">
+  <a class="marca" href="#inicio" aria-label="Cultura Nova Friburgo — início"><b>Cultura</b><span>Nova Friburgo</span></a>
+  <button class="menu-toggle" id="menu" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+  <nav id="nav" aria-label="Navegação principal">
+    <a href="#cartaz">Em cartaz</a><a href="#palcos">Palcos</a><a href="#ano">Agenda do ano</a><a href="#fazer">Para artistas</a><a href="#memoria">Memória</a>
+  </nav>
+</header>
+
+<main id="conteudo">
+
+<!-- 1. ABERTURA -->
+<section class="abertura" id="inicio" aria-label="Abertura">
+  <img class="poster" src="video/abertura-poster.jpg" alt="" aria-hidden="true">
+  <video id="video-abertura" src="video/abertura.mp4" poster="video/abertura-poster.jpg" muted loop playsinline preload="auto" aria-hidden="true"></video>
+  <div class="abertura-texto">
+    <p class="rotulo" data-fx="surgir">Cultura · Nova Friburgo</p>
+    <h1 data-fx="palavras" data-fx-duracao="900">A cidade em <em>cena.</em></h1>
+    <p class="sub" data-fx="subir" data-fx-atraso="700">Teatro, música, dança, memória e as pessoas que fazem tudo isso acontecer, do Centro aos distritos.</p>
+    <div class="atalhos" data-fx="subir" data-fx-atraso="900">
+      <a class="principal" href="#ano">O que tem no ano</a><a href="#palcos">Palcos</a><a href="#fazer">Para artistas</a><a href="#memoria">Memória</a>
+    </div>
+  </div>
+  <button class="pausar" id="pausar" type="button" aria-label="Pausar o vídeo de fundo" aria-pressed="false">
+    <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+  </button>
+</section>
+
+<!-- 2. EM CARTAZ: LINGUAGENS -->
+<section class="cartaz" id="cartaz" aria-labelledby="titulo-cartaz">
+  <div class="cartaz-cabeca">
+    <div><p class="rotulo" data-fx="surgir">Em cartaz</p><h2 id="titulo-cartaz" data-fx="subir" style="margin-top:14px">Seis jeitos de <em>entrar em cena.</em></h2></div>
+    <p data-fx="subir" data-fx-atraso="120">Cada linguagem tem seu palco na cidade: nas salas, nas praças, nas escolas de arte e nas festas de rua.</p>
+  </div>
+  <div class="cartazes">
+    <article class="peca" data-fx="crescer"><p class="n"><span>Nº 1</span><span>Palco</span></p><h3>Tea<em>tro</em></h3><p>Do Teatro Municipal às escolas de teatro da cidade, com espetáculos para adultos e crianças.</p></article>
+    <article class="peca" data-fx="crescer" data-fx-atraso="90"><p class="n"><span>Nº 2</span><span>Som</span></p><h3>Mú<em>sica</em></h3><p>Bandas centenárias, como a Euterpe Friburguense, e concertos gratuitos no inverno.</p></article>
+    <article class="peca" data-fx="crescer" data-fx-atraso="180"><p class="n"><span>Nº 3</span><span>Corpo</span></p><h3>Dan<em>ça</em></h3><p>Balé, dança contemporânea e danças urbanas, com aulas gratuitas na Oficina Escola de Artes.</p></article>
+    <article class="peca" data-fx="crescer"><p class="n"><span>Nº 4</span><span>Olhar</span></p><h3>Artes <em>visuais</em></h3><p>Exposições na Usina Cultural Energisa e cursos de desenho e pintura.</p></article>
+    <article class="peca" data-fx="crescer" data-fx-atraso="90"><p class="n"><span>Nº 5</span><span>Palavra</span></p><h3>Litera<em>tura</em></h3><p>Lançamentos de livros, leituras e contação de histórias para todas as idades.</p></article>
+    <article class="peca" data-fx="crescer" data-fx-atraso="180"><p class="n"><span>Nº 6</span><span>Raiz</span></p><h3>Cultura <em>popular</em></h3><p>Ancestralidade, feiras de afroempreendedores, bandas e as tradições de quem formou a cidade.</p></article>
+  </div>
+</section>
+
+<!-- 3. PICO: OS TRÊS SINAIS E A CORTINA -->
+<section class="sala" id="sala" data-fx-fixa data-fx-altura="4.6" aria-labelledby="titulo-sala">
+  <div class="fx-palco">
+    <img class="cena-fundo" src="img/d-sede.webp" alt="Centro de Nova Friburgo com ipê roxo florido e montanhas ao fundo" loading="lazy" data-fx-escala="1.18,1" data-fx-faixa="0.3,1">
+    <div class="cena-sombra" aria-hidden="true"></div>
+    <div class="feixe" aria-hidden="true" data-fx-opacidade="0,1" data-fx-giro="-18,10" data-fx-faixa="0.36,0.8"></div>
+    <div class="cortina esq" id="cortina-esq" aria-hidden="true"></div>
+    <div class="cortina dir" id="cortina-dir" aria-hidden="true"></div>
+    <div class="bambolina" aria-hidden="true"></div>
+    <div class="sinais" aria-hidden="true">
+      <p class="sinal s1" data-fx-opacidade="1,0" data-fx-faixa="0.1,0.15">Primeiro sinal.<small>Role devagar</small></p>
+      <div class="sinal" data-fx-opacidade="0,1" data-fx-faixa="0.15,0.19"><div data-fx-opacidade="1,0" data-fx-faixa="0.22,0.26">Segundo sinal.<small>A plateia se ajeita</small></div></div>
+      <div class="sinal" data-fx-opacidade="0,1" data-fx-faixa="0.26,0.3"><div data-fx-opacidade="1,0" data-fx-faixa="0.34,0.38">Terceiro sinal.<small>Silêncio. Vai começar.</small></div></div>
+    </div>
+    <div class="revelado" data-fx-opacidade="0,1" data-fx-y="40,0" data-fx-faixa="0.66,0.84">
+      <h2 id="titulo-sala">O palco é a <em>cidade inteira.</em></h2>
+      <p>Em Nova Friburgo, sempre tem alguma coisa em cena. E sempre tem um lugar para você.</p>
+      <p class="credito">Centro de Nova Friburgo · Foto: Daniel Marcus</p>
+    </div>
+  </div>
+</section>
+
+<!-- 4. PALCOS: O REFLETOR -->
+<section class="palcos" id="palcos" data-fx-fundo="#1E1517" data-fx-tinta="#F1E9DA" aria-labelledby="titulo-palcos">
+  <div class="palcos-cabeca">
+    <div><p class="rotulo">O elenco de espaços</p><h2 id="titulo-palcos" style="margin-top:14px">Os palcos <em>da cidade.</em></h2></div>
+    <p>Passe o mouse ou role a página: o refletor ilumina um palco de cada vez.</p>
+  </div>
+  <ol class="elenco" id="elenco">
+    <li><span class="n">01</span><div><h3>Teatro Municipal <em>Laercio Rangel Ventura</em></h3><p class="onde">Praça do Suspiro · Centro</p></div><p class="desc">O principal palco da cidade, reaberto em 2024 depois de um período de manutenção. Recebe teatro, shows, dança e cinema. O Anfiteatro do teatro também recebe apresentações.</p></li>
+    <li><span class="n">02</span><div><h3>Usina Cultural <em>Energisa</em></h3><p class="onde">Praça Pres. Getúlio Vargas, 55 · Centro</p></div><p class="desc">Teatro, exposições, oficinas e programação para a família, em parceria com a Secretaria de Cultura.</p></li>
+    <li><span class="n">03</span><div><h3>Oficina Escola <em>de Artes</em></h3><p class="onde">Praça Getúlio Vargas, 89 · Centro</p></div><p class="desc">Escola pública de artes no antigo fórum, restaurado em 2023. Cursos gratuitos de balé, canto coral, cavaquinho, dança, desenho e pintura, flauta, teatro, teclado, violão e violino.</p></li>
+    <li><span class="n">04</span><div><h3>Museu <em>Nova Friburgo</em></h3><p class="onde">Praça Getúlio Vargas · Centro</p></div><p class="desc">No casarão de 1843 que foi residência urbana do Barão de Nova Friburgo. Abriga a Sala Luzes de África, dedicada à história e à cultura da população negra.</p></li>
+    <li><span class="n">05</span><div><h3>Casarão <em>do Lazareto</em></h3><p class="onde">Duas Pedras</p></div><p class="desc">Restaurado e aberto em 2026 como Casa de Cultura e Cidadania, com oficinas de várias linguagens artísticas.</p></li>
+    <li><span class="n">06</span><div><h3>Centro Cultural <em>Bernardo Monteverde</em></h3><p class="onde">Alto</p></div><p class="desc">Abriga uma unidade de atendimento da Secretaria Municipal de Cultura.</p></li>
+  </ol>
+  <figure class="foto-palco" data-fx="subir"><img data-fx-paralaxe="0.06" src="img/suspiro.webp" alt="Praça do Suspiro com a igreja e o teleférico, onde fica o Teatro Municipal" loading="lazy"><figcaption class="credito">Praça do Suspiro, endereço do Teatro Municipal · Foto: João Luccas Oliveira</figcaption></figure>
+</section>
+
+<!-- 5. O ANO EM CARTAZ -->
+<section class="ano" id="ano" data-fx-fundo="#F1E9DA" data-fx-tinta="#1C1517" aria-labelledby="titulo-ano">
+  <div class="ano-cabeca">
+    <div><p class="rotulo" data-fx="surgir">Agenda do ano</p><h2 id="titulo-ano" data-fx="subir">O ano <em>em cartaz.</em></h2></div>
+    <p data-fx="subir" data-fx-atraso="120">Os encontros que voltam todo ano. Entre eles, a programação dos teatros e espaços segue o ano inteiro.</p>
+  </div>
+  <div class="meses">
+    <div class="mes continua" data-fx="crescer"><span class="m">jan</span><span>Programação nos espaços culturais</span></div>
+    <div class="mes tem" data-fx="crescer" data-fx-atraso="50"><span class="m">fev</span><b>Carnaval</b><span>Desfiles na Avenida Alberto Braune e blocos pela cidade</span></div>
+    <div class="mes tem" data-fx="crescer" data-fx-atraso="100"><span class="m">mar</span><b>Mulher é Arte</b><span>Dia Internacional da Mulher com música, dança, teatro e literatura</span></div>
+    <div class="mes continua" data-fx="crescer" data-fx-atraso="150"><span class="m">abr</span><span>Temporada nos teatros e na Usina</span></div>
+    <div class="mes destaque" data-fx="crescer" data-fx-atraso="200"><span class="m">mai</span><b>Aniversário da cidade</b><span>16 de maio, com desfile cívico na Alberto Braune</span></div>
+    <div class="mes continua" data-fx="crescer" data-fx-atraso="250"><span class="m">jun</span><span>Temporada nos teatros e na Usina</span></div>
+    <div class="mes destaque" data-fx="crescer"><span class="m">jul · ago</span><b>Festival Nova Friburgo Edição Inverno</b><span>Música clássica com entrada gratuita, em cinco espaços culturais</span></div>
+    <div class="mes continua" data-fx="crescer" data-fx-atraso="50"><span class="m">ago</span><span>O festival de inverno segue em agosto</span></div>
+    <div class="mes tem" data-fx="crescer" data-fx-atraso="100"><span class="m">set</span><b>Desfile da Independência</b><span>7 de setembro, na Avenida Alberto Braune</span></div>
+    <div class="mes continua" data-fx="crescer" data-fx-atraso="150"><span class="m">out</span><span>Semana da Criança com teatro e oficinas</span></div>
+    <div class="mes tem" data-fx="crescer" data-fx-atraso="200"><span class="m">nov</span><b>Consciência Negra</b><span>Shows, exposições, teatro e feira de afroempreendedores</span></div>
+    <div class="mes tem" data-fx="crescer" data-fx-atraso="250"><span class="m">dez</span><b>Natal na Usina</b><span>Música, teatro e grupos tradicionais na Usina Cultural Energisa</span></div>
+  </div>
+  <p class="nota">Datas e programação de 2027 a confirmar. Acompanhe o site da Prefeitura e os canais da Secretaria Municipal de Cultura.</p>
+</section>
+
+<!-- 6. PARA QUEM FAZ CULTURA -->
+<section class="fazer" id="fazer" data-fx-fundo="#3B0A14" data-fx-tinta="#F1E9DA" aria-labelledby="titulo-fazer">
+  <div>
+    <p class="rotulo" data-fx="surgir">Para quem faz cultura</p>
+    <h2 id="titulo-fazer" data-fx="subir">Os bastidores também <em>têm vez.</em></h2>
+    <p data-fx="subir" data-fx-atraso="80">Artistas, coletivos, produtores e espaços culturais encontram aqui os caminhos para inscrever projetos, estudar e participar da política cultural da cidade.</p>
+    <div class="botoes" data-fx="subir" data-fx-atraso="160">
+      <a class="botao" href="https://conectaculturanf.com.br" target="_blank" rel="noopener noreferrer">Acessar o Conecta Cultura</a>
+      <a class="botao contorno" href="https://www.pmnf.rj.gov.br" target="_blank" rel="noopener noreferrer">Site da Prefeitura</a>
+    </div>
+  </div>
+  <ol class="programa">
+    <li data-fx="subir"><p class="t">Plataforma</p><h3>Conecta Cultura</h3><p>A plataforma de editais da Secretaria Municipal de Cultura: cadastro, inscrição e acompanhamento dos projetos.</p></li>
+    <li data-fx="subir" data-fx-atraso="80"><p class="t">Fomento</p><h3>Edital Multilinguagens</h3><p>A Chamada Pública nº 03/2026 abriu a 2ª edição do Edital de Fomento Multilinguagens.</p></li>
+    <li data-fx="subir" data-fx-atraso="160"><p class="t">Política nacional</p><h3>Aldir Blanc · Ciclo 2</h3><p>Recursos da Política Nacional Aldir Blanc, definidos depois de escutas territoriais e audiência pública.</p></li>
+    <li data-fx="subir" data-fx-atraso="240"><p class="t">Formação</p><h3>Oficina Escola de Artes</h3><p>Cursos gratuitos para crianças, jovens e adultos. Fique atento à abertura das matrículas.</p></li>
+  </ol>
+</section>
+
+<!-- 7. MEMÓRIA -->
+<section class="memoria" id="memoria" data-fx-fundo="#F1E9DA" data-fx-tinta="#1C1517" aria-labelledby="titulo-memoria">
+  <figure data-fx="esquerda">
+    <img data-fx-paralaxe="0.05" src="img/historica.webp" alt="Gravura antiga da vila de Nova Friburgo" loading="lazy">
+    <figcaption class="credito">Nova Friburgo · Coleção Brasiliana Iconográfica · Domínio público</figcaption>
+  </figure>
+  <div>
+    <p class="rotulo" data-fx="surgir">Memória</p>
+    <h2 id="titulo-memoria" data-fx="subir">Uma história contada <em>por muitas vozes.</em></h2>
+    <p data-fx="subir" data-fx-atraso="80">A cultura de Nova Friburgo vem de suíços, alemães, italianos, libaneses, de povos indígenas e da população negra que ajudou a construir a cidade. A memória também está em cena.</p>
+    <ul>
+      <li data-fx="subir"><b>Sala Luzes de África</b>Espaço permanente do Museu Nova Friburgo, aberto em 2025, construído com coletivos negros da cidade.</li>
+      <li data-fx="subir" data-fx-atraso="80"><b>Bandas centenárias</b>A Euterpe Friburguense e a Campesina Friburguense seguem tocando nas datas cívicas e nas festas da cidade.</li>
+      <li data-fx="subir" data-fx-atraso="160"><b>Casarões restaurados</b>Projetos da Fundação Dom João VI devolvem prédios históricos, como o Casarão do Lazareto, ao uso público.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 8. CONVITE -->
+<section class="convite" id="convite" aria-labelledby="titulo-convite">
+  <img data-fx-paralaxe="0.12" src="img/teleferico-neblina.webp" alt="Cadeirinha do teleférico da Praça do Suspiro em meio à neblina" loading="lazy">
+  <div class="convite-texto">
+    <p class="rotulo" data-fx="surgir">A cortina está aberta</p>
+    <h2 id="titulo-convite" data-fx="palavras" data-fx-duracao="900">O próximo ato é <em>seu.</em></h2>
+    <div class="botoes" data-fx="subir" data-fx-atraso="300"><a class="botao" href="#ano">Ver a agenda do ano</a><a class="botao contorno" href="#fazer">Inscrever um projeto</a></div>
+    <p class="credito">Teleférico da Praça do Suspiro · Foto: Daniel Marcus</p>
+  </div>
+</section>
+</main>
+
+<footer class="rodape">
+  <div class="rodape-topo">
+    <div><a class="marca" href="#inicio"><b>Cultura</b><span>Nova Friburgo</span></a><p style="margin:14px 0 0;max-width:42ch">Teatro, música, dança, artes visuais, literatura, cultura popular e memória.</p></div>
+    <nav aria-label="Rodapé"><a href="#cartaz">Em cartaz</a><a href="#palcos">Palcos</a><a href="#ano">Agenda do ano</a><a href="#fazer">Para artistas</a><a href="#memoria">Memória</a></nav>
+  </div>
+  <details>
+    <summary>Créditos das imagens</summary>
+    <ul>
+      <li>Vídeo de abertura: Prefeitura de Nova Friburgo · Secretaria de Turismo</li>
+      <li>Centro com ipê florido e teleférico na neblina: Daniel Marcus</li>
+      <li>Praça do Suspiro: João Luccas Oliveira</li>
+      <li>Nova Friburgo, Coleção Brasiliana Iconográfica: domínio público, via Wikimedia Commons</li>
+    </ul>
+  </details>
+  <small>Protótipo de portal de cultura, proposta para a Secretaria Municipal de Cultura de Nova Friburgo · novembro de 2026. Datas e programação seguem as fontes públicas disponíveis e podem mudar.</small>
+</footer>
+
+<script src="sites-incriveis.js" defer></script>
+<script>
+/* Menu no celular */
+(function(){
+  var topo = document.getElementById('topo'), menu = document.getElementById('menu');
+  menu.addEventListener('click', function(){ var a = topo.classList.toggle('aberto'); menu.setAttribute('aria-expanded', a ? 'true' : 'false'); });
+  topo.querySelectorAll('nav a').forEach(function(l){ l.addEventListener('click', function(){ topo.classList.remove('aberto'); menu.setAttribute('aria-expanded','false'); }); });
+})();
+
+/* Vídeo de abertura: sem áudio, com pausa; respeita movimento reduzido */
+(function(){
+  var v = document.getElementById('video-abertura'), b = document.getElementById('pausar');
+  var reduzido = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var PAUSA = '<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>';
+  var PLAY = '<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>';
+  function rotulo(){ var p = v.paused; b.setAttribute('aria-pressed', p ? 'true' : 'false'); b.setAttribute('aria-label', p ? 'Reproduzir o vídeo de fundo' : 'Pausar o vídeo de fundo'); b.innerHTML = p ? PLAY : PAUSA; }
+  v.muted = true;
+  if (!reduzido){ var t = v.play(); if (t && t.catch) t.catch(function(){}); }
+  v.addEventListener('play', rotulo); v.addEventListener('pause', rotulo);
+  b.addEventListener('click', function(){ v.paused ? v.play() : v.pause(); });
+  rotulo();
+})();
+
+/* Pico: a cortina abre com a rolagem — código próprio da página */
+(function(){
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var sala = document.getElementById('sala');
+  var esq = document.getElementById('cortina-esq'), dir = document.getElementById('cortina-dir');
+  function suave(t){ return t < 0 ? 0 : t > 1 ? 1 : t * t * (3 - 2 * t); }
+  function quadro(){
+    var p = parseFloat(getComputedStyle(sala).getPropertyValue('--progresso')) || 0;
+    var a = suave((p - 0.36) / 0.3);           // depois do terceiro sinal, a cortina abre
+    var franzido = 1 - a * 0.55;                // o veludo se recolhe para os lados
+    esq.style.transform = 'translateX(' + (-a * 62).toFixed(2) + '%) scaleX(' + franzido.toFixed(3) + ')';
+    dir.style.transform = 'translateX(' + (a * 62).toFixed(2) + '%) scaleX(' + franzido.toFixed(3) + ')';
+    requestAnimationFrame(quadro);
+  }
+  requestAnimationFrame(quadro);
+})();
+
+/* Movimento-assinatura: o refletor escolhe o palco — código próprio da página */
+(function(){
+  var secao = document.getElementById('palcos');
+  var itens = Array.prototype.slice.call(document.querySelectorAll('#elenco li'));
+  var reduzido = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduzido) return;
+  var ponteiroFino = window.matchMedia('(pointer: fine)').matches;
+  var py = null, px = null, atual = null;
+  function acender(li){
+    if (li === atual) return;
+    if (atual) atual.classList.remove('em-cena');
+    atual = li; if (li) li.classList.add('em-cena');
+  }
+  function maisPerto(y){
+    var melhor = null, dist = 1e9;
+    itens.forEach(function(li){ var r = li.getBoundingClientRect(); var c = r.top + r.height / 2; var d = Math.abs(c - y); if (d < dist){ dist = d; melhor = li; } });
+    return melhor;
+  }
+  function luz(x, y){
+    var r = secao.getBoundingClientRect();
+    secao.style.setProperty('--rx', ((x - r.left) / r.width * 100).toFixed(1) + '%');
+    secao.style.setProperty('--ry', ((y - r.top) / r.height * 100).toFixed(1) + '%');
+  }
+  function atualizar(){
+    var r = secao.getBoundingClientRect();
+    if (r.bottom < 0 || r.top > window.innerHeight) return;
+    if (ponteiroFino && py !== null && px !== null){ acender(maisPerto(py)); luz(px, py); }
+    else { var y = window.innerHeight * 0.5; var li = maisPerto(y); acender(li); if (li){ var b = li.getBoundingClientRect(); luz(b.left + b.width * 0.35, b.top + b.height / 2); } }
+  }
+  secao.addEventListener('pointermove', function(e){ if (e.pointerType === 'mouse'){ px = e.clientX; py = e.clientY; atualizar(); } });
+  secao.addEventListener('pointerleave', function(){ px = py = null; atualizar(); });
+  window.addEventListener('scroll', function(){ if (px !== null){ /* o mouse fica parado, a página anda */ } atualizar(); }, { passive: true });
+  atualizar();
+})();
+</script>
+</body>
+</html>
